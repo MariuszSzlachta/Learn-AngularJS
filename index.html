@@ -7,40 +7,52 @@
   <title>Document</title>
   <script src="./angular.min.js"></script>
   <script src="./script.js"></script>
+  <style>
+    table {
+    border-collapse: collapse;
+    font-family:Arial;
+    }
+
+    td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        border: 1px solid black;
+        padding: 5px;
+        text-align: left;
+    }
+  </style>
 </head>
 <body ng-app="myModule">
-  <table ng-controller="dataController">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Gender</th>
-        <th>Salary</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="employee in employees">
-        <td> {{ employee.firstName }} </td>
-        <td> {{ employee.lastName }} </td>
-        <td> {{ employee.gender }} </td>
-        <td> {{ employee.salary }} </td>
-      </tr>
-    </tbody>
-  </table>
-  <hr/>
-  <br/>
-  <div ng-controller="countriesController">
-    <ul >
-      <li ng-repeat="country in countries" ng-init="parentIndex = $index">
-        {{country.name}} - index = {{ $index }}
-        <ul >
-          <li ng-repeat='city in country.cities'>
-            {{city.name}} - parentIndex = {{parentIndex}} - index = {{ $index }}
-          </li>
-        </ul>
-      </li>
-    </ul>
-
+  <div ng-controller="dataController">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Likes</th>
+          <th>Dislikes</th>
+          <th>Like/Dislike</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="technology in technologies">
+          <td>{{ technology.name }}</td>
+          <td>{{ technology.likes }}</td>
+          <td>{{ technology.dislikes }}</td>
+          <td>
+            <button ng-click="incrementLikes(technology)">
+              like
+            </button>
+            <button ng-click="incrementDislikes(technology)">
+              dislike
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
 </body>
