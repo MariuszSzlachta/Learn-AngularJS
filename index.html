@@ -27,5 +27,19 @@
       </tr>
     </tbody>
   </table>
+  <hr/>
+  <br/>
+  <div ng-controller="countriesController">
+    <ul ng-repeat="country in countries">
+      <li>{{country.name}}
+        <ul ng-repeat='city in country.cities'>
+          <li>{{city.name}}</li>
+        </ul>
+      </li>
+      
+    </ul>
+
+  </div>
+
 </body>
 </html>
