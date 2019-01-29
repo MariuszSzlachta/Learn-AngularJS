@@ -24,11 +24,31 @@
         padding: 5px;
         text-align: left;
     }
+
   </style>
 </head>
 <body ng-app="myModule">
   <div ng-controller="dataController">
-    Rows to display: <input type="number" ng-model="rowCount" step="1" max="5" min="0" />
+    <div>
+      <span>
+        Rows to display:
+      </span>
+      <input type="number" ng-model="rowCount" step="1" max="5" min="0" />
+    </div>
+    <br/>
+    <div>
+      <span>
+        Sort by:
+      </span>
+      <select ng-model="sortColumn">
+        <option value="name">Name</option>
+        <option value="dateOfBirth">Birth date</option>
+        <option value="gender">gender</option>
+        <option value="+salary">salary ascending</option>
+        <option value="-salary">salary descending</option>
+      </select>
+    </div>
+    <br>
     <table>
       <thead>
         <tr>
@@ -40,8 +60,8 @@
         </tr>
       </thead>
       <tbody>
-        <!-- limitTo: model : startingPosition -->
-        <tr ng-repeat="employee in employees | limitTo: rowCount">
+        <!-- filter_name || buildInFilter: model : startingPosition -->
+        <tr ng-repeat="employee in employees | limitTo: rowCount | orderBy: sortColumn" >
           <td>{{ employee.name | uppercase }}</td>
           <td>{{ employee.dateOfBirth | date: "dd/MM/yyyy" }}</td>
           <td>{{ employee.gender }}</td>

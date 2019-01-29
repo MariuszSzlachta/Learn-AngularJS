@@ -26,5 +26,6 @@ const dataController = myApp.controller('dataController', $scope => {
   ];
 
   $scope.employees = employees;
-  $scope.rowCount = 3;
+  $scope.rowCount = 5;
+  $scope.sortColumn = "name"; // name is a default value I want to sort by
 })
