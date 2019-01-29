@@ -74,8 +74,7 @@
     </div>
     <br>
     <div>
-      <span>Search: </span>
-      <input type="text" ng-model="searchText" /> <!-- searchText.properity-->
+      <input type="text" ng-model="searchText" placeholder="city & name"/> <!-- searchText.properity-->
     </div>
     <br>
     <table>
@@ -98,18 +97,23 @@
             <div ng-class="getSortClass('salary')"></div>
           </th>
           <th>Salary (currency filter)</th>
+          <th ng-click="sortData('city')">
+              City
+              <div ng-class="getSortClass('city')"></div>
+            </th>
         </tr>
       </thead>
       <tbody>
         <!-- filter_name || buildInFilter: model : startingPosition -->
         <!-- <tr ng-repeat="employee in employees | limitTo: rowCount | orderBy: sortColumn : reverseSort | filter: searchText" > -->
-        <tr ng-repeat="employee in employees | filter: searchText" >
+        <tr ng-repeat="employee in employees | filter: search" >
           <td>{{ employee.name | uppercase }}</td>
           <td>{{ employee.dateOfBirth | date: "dd/MM/yyyy" }}</td>
           <td>{{ employee.gender }}</td>
           <td>{{ employee.salary | number: 2}}</td>
           <!-- currency: "sign of currency" : "precision" -->
           <td>{{ employee.salary | currency: "£" : 1 }}</td>
+          <td>{{ employee.city }}</td>
         </tr>
       </tbody>
     </table>
