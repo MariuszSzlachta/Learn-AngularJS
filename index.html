@@ -28,28 +28,26 @@
 </head>
 <body ng-app="myModule">
   <div ng-controller="dataController">
+    Rows to display: <input type="number" ng-model="rowCount" step="1" max="5" min="0" />
     <table>
       <thead>
         <tr>
           <th>Name</th>
-          <th>Likes</th>
-          <th>Dislikes</th>
-          <th>Like/Dislike</th>
+          <th>Date of Birth</th>
+          <th>Gender</th>
+          <th>Salary (number filter)</th>
+          <th>Salary (currency filter)</th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="technology in technologies">
-          <td>{{ technology.name }}</td>
-          <td>{{ technology.likes }}</td>
-          <td>{{ technology.dislikes }}</td>
-          <td>
-            <button ng-click="incrementLikes(technology)">
-              like
-            </button>
-            <button ng-click="incrementDislikes(technology)">
-              dislike
-            </button>
-          </td>
+        <!-- limitTo: model : startingPosition -->
+        <tr ng-repeat="employee in employees | limitTo: rowCount">
+          <td>{{ employee.name | uppercase }}</td>
+          <td>{{ employee.dateOfBirth | date: "dd/MM/yyyy" }}</td>
+          <td>{{ employee.gender }}</td>
+          <td>{{ employee.salary | number: 2}}</td>
+          <!-- currency: "sign of currency" : "precision" -->
+          <td>{{ employee.salary | currency: "£" : 1 }}</td>
         </tr>
       </tbody>
     </table>
