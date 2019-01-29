@@ -7,3 +7,7 @@ const imageController = myApp.controller('imageController', function($scope){
   }
   $scope.image = image;
 })
+
+const dataController = myApp.controller('dataController', $scope => {
+  $scope.message = 'hello world';
+})

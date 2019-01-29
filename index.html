@@ -12,5 +12,9 @@
   <div ng-controller="imageController">
     <img ng-src="{{image.url}}" alt="{{image.name}}">
   </div>
+  <div ng-controller="dataController">
+    <input type="text" ng-model="message" />
+    <p>{{ message }}</p>
+  </div>
 </body>
 </html>
