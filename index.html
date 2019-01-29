@@ -31,10 +31,12 @@
   <br/>
   <div ng-controller="countriesController">
     <ul >
-      <li ng-repeat="country in countries">
-        {{country.name}}
+      <li ng-repeat="country in countries" ng-init="parentIndex = $index">
+        {{country.name}} - index = {{ $index }}
         <ul >
-          <li ng-repeat='city in country.cities'>{{city.name}}</li>
+          <li ng-repeat='city in country.cities'>
+            {{city.name}} - parentIndex = {{parentIndex}} - index = {{ $index }}
+          </li>
         </ul>
       </li>
     </ul>
