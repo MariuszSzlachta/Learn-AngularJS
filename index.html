@@ -73,6 +73,11 @@
       </select>
     </div>
     <br>
+    <div>
+      <span>Search: </span>
+      <input type="text" ng-model="searchText" />
+    </div>
+    <br>
     <table>
       <thead>
         <tr>
@@ -97,7 +102,8 @@
       </thead>
       <tbody>
         <!-- filter_name || buildInFilter: model : startingPosition -->
-        <tr ng-repeat="employee in employees | limitTo: rowCount | orderBy: sortColumn : reverseSort" >
+        <!-- <tr ng-repeat="employee in employees | limitTo: rowCount | orderBy: sortColumn : reverseSort | filter: searchText" > -->
+        <tr ng-repeat="employee in employees | filter: searchText" >
           <td>{{ employee.name | uppercase }}</td>
           <td>{{ employee.dateOfBirth | date: "dd/MM/yyyy" }}</td>
           <td>{{ employee.gender }}</td>
