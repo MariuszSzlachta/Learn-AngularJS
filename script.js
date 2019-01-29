@@ -27,5 +27,19 @@ const dataController = myApp.controller('dataController', $scope => {
 
   $scope.employees = employees;
   $scope.rowCount = 5;
-  $scope.sortColumn = "name"; // name is a default value I want to sort by
+  $scope.sortColumn = 'name'; // name is a default value I want to sort by
+  $scope.reverseSort = 'false';
+  $scope.sortData = columnName => {
+    // reverse sorting the same column every click
+    $scope.reverseSort = ($scope.sortColumn == columnName) ? !$scope.reverseSort : false;
+    // sort by column that is clicked
+    $scope.sortColumn = columnName;
+  }
+  // adding a class that displays proper arrow or does not add any class
+  $scope.getSortClass = columnName => {
+    if ($scope.sortColumn == columnName) {
+      return $scope.reverseSort ? 'arrow-down' : 'arrow-up'
+    }
+    return '';
+  }
 })
