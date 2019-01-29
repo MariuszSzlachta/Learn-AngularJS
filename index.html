@@ -9,13 +9,8 @@
   <script src="./script.js"></script>
 </head>
 <body ng-app="myModule">
-  <div ng-controller="myController">
-    {{ message }}
-
-  </div>
-  <div ng-controller="employeeController">
-    <strong>Name: </strong> {{ employee.name }}
-    <strong>Gender: </strong> {{ employee.gender }}
+  <div ng-controller="imageController">
+    <img ng-src="{{image.url}}" alt="{{image.name}}">
   </div>
 </body>
 </html>
